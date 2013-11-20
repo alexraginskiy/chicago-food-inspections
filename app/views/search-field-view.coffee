@@ -3,7 +3,7 @@ View = require 'views/base/view'
 module.exports = class SearchFieldView extends View
 
   autoRender: true
-  template: require './templates/search_field'
+  template: require './templates/search-field'
   events:
     'submit #search-form' : 'search'
 

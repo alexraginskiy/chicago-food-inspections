@@ -14,6 +14,7 @@
       .col-sm-6
         h2.facility-details-heading
           | #{dba_name}
+
         p
           | {{address}}
           br
@@ -21,16 +22,16 @@
           br
           span class="label label-{{resultClass}}" #{results}
           br
-          small last inspected #{mmddyy inspection_date}
+          small Last inspected #{mmddyy inspection_date}
           br
-          small #{facility_type}
+          small #{facility_type} (License #: {{license_}})
 
-      .col-sm-3
+      .col-sm-3.facility-details-map
         a href="http://maps.google.com/?q={{fullAddress}}"
-          img.img-responsive.facility-details-map src=mapURL
-      .col-sm-3
+          img.facility-details-map-image src=mapURL
+      .col-sm-3.facility-details-map
         a href="http://maps.google.com/?q={{fullAddress}}"
-          img.img-responsive.facility-details-map src=streetViewURL
+          img.facility-details-map-image src=streetViewURL
 
 .container
   #facility-inspections

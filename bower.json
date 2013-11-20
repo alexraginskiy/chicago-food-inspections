@@ -1,7 +1,6 @@
 {
-  "name": "example-app",
+  "name": "chicago-food-inspections",
   "version": "0.1.0",
-  "main": "public/javascripts/app.js",
   "dependencies": {
     "chaplin": "~0.11.0",
     "lodash": "~2.0.0",

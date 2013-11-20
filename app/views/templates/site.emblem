@@ -1,13 +1,16 @@
 .container
   header
-    h4.text-center
-      a href="{{url 'home#show'}}" Chicago Food Inspection Search
+    h1.logo
+      a href="{{url 'home#show'}}" Chicago Food Inspections
 
 section.search-field
 section.main-content
 
 
 footer.site-footer
-  .container
-    p.text-center
-      | Chicago food inspections
+  .container.text-center
+    p.text-muted
+      ' Created by
+      a href="https://github.com/alexraginskiy" Alex Raginskiy
+      '  &sdot;
+      a href="https://github.com/alexraginskiy/chicago-food-inspections" GitHub Project

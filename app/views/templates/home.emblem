@@ -1,3 +1,3 @@
 .container
   .text-center
-    img.home-logo src="/images/chicago_health_logo.png"
+    img.logo-image src="/images/chicago_health_logo.png"

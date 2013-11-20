@@ -3,7 +3,7 @@ View = require 'views/base/view'
 module.exports = class SearchResultView extends View
   autoRender: true
   noWrap: true
-  template: require './templates/search_result'
+  template: require './templates/search-result'
 
   getTemplateData: ->
     data                        = @model.attributes

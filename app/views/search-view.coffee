@@ -8,10 +8,3 @@ module.exports = class SearchView extends CollectionView
   listSelector: '#search-results'
   loadingSelector: '.loading-indicator'
   fallbackSelector: '.no-results'
-
-  initialize: ->
-    super
-    @listenTo @collection, 'syncStateChange', @updateResultsCounter
-
-  updateResultsCounter: ->
-    console.log @collection.length

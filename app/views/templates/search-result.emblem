@@ -1,7 +1,7 @@
 a.list-group-item href="{{url 'facility#show' license_}}"
   .media
     .pull-left
-      i class="fa fa-3x fa-fw {{resultIcon}} text-{{resultClass}}"
+      i class="fa fa-3x fa-fw {{resultIcon}}"
     .pull-right
       span class="label label-{{resultClass}}" {{results}}
     .media-body

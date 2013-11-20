@@ -1,6 +1,6 @@
 Controller              = require 'controllers/base/controller'
 
-FacilityInspections     = require 'models/facility_inspections'
+FacilityInspections     = require 'models/facility-inspections'
 
 FacilityView            = require 'views/facility-view'
 FacilityInspectionsView = require 'views/facility-inspections-view'

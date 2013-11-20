@@ -28,13 +28,15 @@ module.exports = class Inspection extends Model
     result = @get('results').toLowerCase()
 
     if result == 'fail'
-      labelClass = 'fa-exclamation-triangle'
+      iconClass = 'fa-exclamation-triangle text-danger'
     else if result == 'pass'
-      labelClass = 'fa-check-circle'
+      iconClass = 'fa-check-circle text-success'
     else if result == 'pass w/ conditions'
-      labelClass = 'fa-exclamation-circle'
+      iconClass = 'fa-exclamation-circle text-warning'
+    else if result == 'out of business'
+      iconClass = 'fa-times-circle text-muted'
 
-    return labelClass
+    return iconClass
 
   fullAddress: ->
     address = $.trim @get('address')

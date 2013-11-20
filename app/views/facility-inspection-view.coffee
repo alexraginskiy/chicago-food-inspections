@@ -3,7 +3,7 @@ View = require 'views/base/view'
 module.exports = class FacilityInspectionView extends View
   autoRender: true
   noWrap: true
-  template: require './templates/facility_inspection'
+  template: require './templates/facility-inspection'
 
   getTemplateData: ->
     data                        = @model.attributes

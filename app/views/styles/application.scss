@@ -1,8 +1,23 @@
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
+
+// Large screen / wide desktop
+$container-lg: $container-desktop;
+
 @import "bootstrap/bootstrap";
 
-.home-logo {
+.logo {
+  text-align: center;
+  font-size: $font-size-h4;
+  margin: 20px 0;
+
+  a {
+    text-decoration: none;
+    color: #ec0801;
+  }
+}
+
+.logo-image {
   @include img-responsive(inline-block);
 }
 
@@ -24,7 +39,8 @@
 }
 
 .search-field-container {
-  background: #EEE;
+  background: #b3dcf2;
+  @include gradient-horizontal-three-colors(#95b8ca, #b3dcf2, 50%, #95b8ca);
   padding: 20px 0;
   margin-bottom: 20px;
 }
@@ -34,6 +50,11 @@
 }
 
 .facility-details-map {
+  text-align: center;
+}
+
+.facility-details-map-image {
+  @include img-responsive(inline-block);
   background: #FFF;
   padding: 4px;
   border: 1px solid #CCC;
