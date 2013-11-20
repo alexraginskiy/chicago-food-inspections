@@ -11,6 +11,10 @@ module.exports = class SearchView extends CollectionView
   loadingSelector: '.search-results-loading'
   fallbackSelector: '.no-results'
 
+  useCssAnimation: true
+  animationStartClass: 'fade'
+  animationEndClass: 'in'
+
   regions:
     'searchDetails' : '.search-details-container'
 
