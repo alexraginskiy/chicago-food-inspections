@@ -9,5 +9,6 @@
 
   .row
     .col-sm-8.col-sm-offset-2
+      .search-details-container
       .list-group.search-results-list
 

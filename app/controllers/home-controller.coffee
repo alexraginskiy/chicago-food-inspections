@@ -1,11 +1,11 @@
-mediator = require 'mediator'
-Controller = require 'controllers/base/controller'
+mediator        = require 'mediator'
+Controller      = require 'controllers/base/controller'
 
-Inspections = require 'models/inspections'
+Inspections     = require 'models/inspections'
 
-HomeView = require 'views/home-view'
-AboutView = require 'views/about-view'
-SearchView = require 'views/search-view'
+HomeView        = require 'views/home-view'
+AboutView       = require 'views/about-view'
+SearchView      = require 'views/search-view'
 SearchFieldView = require 'views/search-field-view'
 
 module.exports = class HomeController extends Controller
@@ -22,7 +22,8 @@ module.exports = class HomeController extends Controller
 
   search: (params)->
     @collection = new Inspections
+    @view       = new SearchView region: 'main', collection: @collection
+
     @collection.search(params.query)
-    @view = new SearchView region: 'main', collection: @collection
 
     mediator.publish 'search', decodeURI(params.query)

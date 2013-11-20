@@ -29,7 +29,18 @@ $container-lg: $container-desktop;
   background: #b3dcf2;
   @include gradient-horizontal-three-colors(#95b8ca, #b3dcf2, 50%, #95b8ca);
   padding: 20px 0;
-  margin-bottom: 20px;
+  margin: 0 0 10px;
+
+  .form-control {
+    border-color: #7794a4;
+    @include box-shadow(0 1px 1px rgba(255,255,255,1))
+  }
+}
+
+.search-details {
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0 0 10px;
 }
 
 .search-results-list {
@@ -42,7 +53,6 @@ $container-lg: $container-desktop;
 }
 
 .facility-details {
-  background: #EEE;
   padding: 10px 0;
   background-repeat: no-repeat;
   background-size: cover;

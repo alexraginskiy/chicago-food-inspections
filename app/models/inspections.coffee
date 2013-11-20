@@ -10,6 +10,9 @@ module.exports = class Inspections extends Collection
   model: Inspection
   urlRoot: "http://data.cityofchicago.org/resource/4ijn-s7e5.json?$limit=#{DEFAULT_LIMIT}&$select=#{DEFAULT_COLUMNS.join(',')}"
 
+  searchType: null
+  searchString: null
+
   search: (term, options={})->
     options.reset = true
 
@@ -18,6 +21,8 @@ module.exports = class Inspections extends Collection
     else
       @_searchByText(term, options)
 
+    @searchString = decodeURI(term)
+
   searchByLicense: (license, options={})->
     @url = @urlRoot + "&$where=license_=#{license}"
     @_fetchSearch(options)
@@ -25,10 +30,12 @@ module.exports = class Inspections extends Collection
   _searchByText: (name, options={})->
     @url = @urlRoot + "&$q=#{name}"
     @_fetchSearch(options)
+    @searchType = 'text'
 
   _searchByZip: (zipcode, options={})->
     @url = -> @urlRoot + "&zip=#{zipcode}"
     @_fetchSearch(options)
+    @searchType = 'zip'
 
   _fetchSearch: (options)->
     @fetch(options)
