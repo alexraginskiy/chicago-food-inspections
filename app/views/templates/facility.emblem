@@ -8,28 +8,29 @@
         i.fa.fa-chevron-left: |  Search
 
 
-.facility-details style='background-image: linear-gradient(rgba(255,255,255,.9),rgba(255,255,255,0.7)), url({{streetViewURLLarge}})'
+.facility-details style='background-image: {{headerGradient}}, url({{streetViewURLLarge}})'
   .container
     .row
-      .col-sm-6
+      .col-md-4
         h2.facility-details-heading
           | #{dba_name}
 
-        p
+        span class="label label-{{resultClass}}" #{results}
+        p.facility-details-info
           | {{address}}
           br
           | {{city}}, {{state}} {{zip}}
-          br
-          span class="label label-{{resultClass}}" #{results}
           br
           small Last inspected #{mmddyy inspection_date}
           br
           small #{facility_type} (License #: {{license_}})
 
-      .col-sm-3.facility-details-map
+
+      .clearfix.visible-sm
+      .col-md-4.col-sm-6.facility-details-map
         a href="http://maps.google.com/?q={{fullAddress}}"
           img.facility-details-map-image src=mapURL
-      .col-sm-3.facility-details-map
+      .col-md-4.col-sm-6.facility-details-map
         a href="http://maps.google.com/?q={{fullAddress}}"
           img.facility-details-map-image src=streetViewURL
 

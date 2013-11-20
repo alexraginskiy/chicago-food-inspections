@@ -1,0 +1,30 @@
+.container
+  .row
+    .col-sm-10.col-sm-offset-1
+      h4 About
+
+      p
+        ' This app allows you to search the results of inspections performed by the Chicago Department of Public Health's
+        a href="http://www.cityofchicago.org/city/en/depts/cdph/provdrs/environ_health/svcs/food_protection_program.html" Food Protection Program
+        | .
+
+      p
+        ' The results of these inspections are published by the City of Chicago through the
+        a href="https://data.cityofchicago.org/" City of Chicago Data Portal
+        '  and are available
+        a href="https://data.cityofchicago.org/Health-Human-Services/Food-Inspections/4ijn-s7e5" here
+        | .
+
+      p
+        span.label.label-warning Disclaimer
+        |  This app was written as a demonstration. The data backing this app is controlled and delivered by the City of Chicago. The availability and validity of any records are not guaranteed.
+
+      h4 Technical Info
+
+      p
+        | This app was written in CoffeeScript using the Chaplin framework, and built using Brunch.  Templates are pre-compiled using Handlebars and are written in Emblem.
+      p
+        | Bootstrap (SASS port) was used for rapid styling and Font Awesome for the vector icons.
+
+      p
+        | Source code is available on GitHub.

@@ -2,7 +2,7 @@ Collection = require './base/collection'
 Inspection = require 'models/inspection'
 
 DEFAULT_LIMIT = 20
-DEFAULT_COLUMNS = ['dba_name', 'address', 'zip', 'results', 'inspection_date', 'inspection_id', 'inspection_type', 'license_']
+DEFAULT_COLUMNS = ['dba_name', 'address', 'city', 'state', 'zip', 'results', 'inspection_date', 'inspection_id', 'inspection_type', 'license_']
 
 module.exports = class Inspections extends Collection
 

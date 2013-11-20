@@ -12,16 +12,20 @@ module.exports = class FacilityView extends View
     super
 
   getTemplateData: ->
+
+    mapImageWidth   = 380
+    mapImageHeight  = 220
+    headerGradient  = 'linear-gradient(rgba(255,255,255,1),rgba(255,255,255,0.7) 100%)'
+
     data                        = @model.attributes
     data.friendlyInspectionDate = @model.friendlyInspectionDate()
     data.resultClass            = @model.resultCSSClass()
     data.resultIcon             = @model.resultIcon()
     data.fullAddress            = @model.fullAddress()
-    data.mapURL                 = @model.mapURL(380, 200)
-    data.streetViewURL          = @model.streetViewURL(380, 200)
+    data.mapURL                 = @model.mapURL(mapImageWidth, mapImageHeight)
+    data.streetViewURL          = @model.streetViewURL(mapImageWidth, mapImageHeight)
     data.streetViewURLLarge     = @model.streetViewURL(1200, 600)
     data.lastSearchTerm         = mediator.lastSearchTerm
-
-    console.log data.mapURL
+    data.headerGradient         = headerGradient
 
     return data

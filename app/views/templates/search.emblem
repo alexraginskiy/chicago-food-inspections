@@ -1,4 +1,4 @@
-.container
+.container.search-results
   .loading-indicator.text-center
     p.lead
       i.fa.fa-spinner.fa-spin
@@ -7,5 +7,7 @@
   .no-results
     p No results were found, check the spelling or try a different search
 
-  .list-group#search-results
+  .row
+    .col-sm-8.col-sm-offset-2
+      .list-group.search-results-list
 

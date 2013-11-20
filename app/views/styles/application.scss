@@ -21,6 +21,26 @@ $container-lg: $container-desktop;
   @include img-responsive(inline-block);
 }
 
+.site-footer {
+  margin: 20px 0;
+}
+
+.search-field-container {
+  background: #b3dcf2;
+  @include gradient-horizontal-three-colors(#95b8ca, #b3dcf2, 50%, #95b8ca);
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+.search-results-list {
+  border-radius: 4px;
+  @include box-shadow(0 1px 1px rgba(0,0,0,.25));
+}
+
+.back-to-search-container {
+  margin-bottom: 10px;
+}
+
 .facility-details {
   background: #EEE;
   padding: 10px 0;
@@ -34,31 +54,21 @@ $container-lg: $container-desktop;
   text-shadow: 1px 1px 0 rgba(255,255,255,.8)
 }
 
-.site-footer {
-  margin: 20px 0;
-}
-
-.search-field-container {
-  background: #b3dcf2;
-  @include gradient-horizontal-three-colors(#95b8ca, #b3dcf2, 50%, #95b8ca);
-  padding: 20px 0;
-  margin-bottom: 20px;
-}
-
-.back-to-search-container {
-  margin-bottom: 10px;
-}
-
 .facility-details-map {
   text-align: center;
+}
+
+.facility-details-info {
+  text-shadow: 1px 1px 0 rgba(255,255,255,.8);
 }
 
 .facility-details-map-image {
   @include img-responsive(inline-block);
   background: #FFF;
   padding: 4px;
-  border: 1px solid #CCC;
   margin: 5px 0;
+  border-radius: 4px;
+  @include box-shadow(0 1px 1px rgba(0,0,0,.25));
 }
 
 .facility-inspections-list {

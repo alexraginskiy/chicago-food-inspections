@@ -1,6 +1,6 @@
 .search-field-container
   .container
     .row
-      .col-sm-4.col-sm-offset-4
+      .col-sm-6.col-sm-offset-3
         form#search-form
           input.#search-field.form-control type="text" name="search" placeholder="Search by zipcode or business name"
