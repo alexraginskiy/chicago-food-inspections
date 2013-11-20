@@ -8,7 +8,7 @@ module.exports = class SearchView extends CollectionView
   template: require './templates/search'
   itemView: SearchResultView
   listSelector: '.search-results-list'
-  loadingSelector: '.loading-indicator'
+  loadingSelector: '.search-results-loading'
   fallbackSelector: '.no-results'
 
   regions:

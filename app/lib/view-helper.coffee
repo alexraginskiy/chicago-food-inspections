@@ -26,6 +26,9 @@ register 'without', (context, options) ->
 register 'url', (routeName, params..., options) ->
   Chaplin.helpers.reverse routeName, params
 
+register 'linkTo', (url, text)->
+  return new Handlebars.SafeString "<a href='#{url}'>#{text}</a>"
+
 register 'fromNow', (date)->
   moment(date).fromNow()
 

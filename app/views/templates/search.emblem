@@ -1,8 +1,6 @@
 .container.search-results
-  .loading-indicator.text-center
-    p.lead
-      i.fa.fa-spinner.fa-spin
-      |  searching...
+  .search-results-loading
+    i.fa.fa-spinner.fa-spin
 
   .no-results
     p No results were found, check the spelling or try a different search
