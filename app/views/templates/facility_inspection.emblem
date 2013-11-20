@@ -1,0 +1,13 @@
+div class="panel panel-{{resultClass}}"
+  .panel-heading
+    h4.panel-title
+      a data-toggle="collapse" data-parent="#facility-inspections-list" href="#facility-inspection-{{inspection_id}}"
+        .row
+          .col-xs-9
+            | {{mmddyy inspection_date}}
+          .col-xs-3
+            span class="pull-right label label-{{resultClass}}" #{results}
+  if violations
+    .panel-collapse.collapse  id="facility-inspection-{{inspection_id}}"
+      .panel-body
+        | {{{violations}}}

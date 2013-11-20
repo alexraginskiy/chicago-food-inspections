@@ -1,0 +1,47 @@
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "bootstrap/bootstrap";
+
+.home-logo {
+  @include img-responsive(inline-block);
+}
+
+.facility-details {
+  background: #EEE;
+  padding: 10px 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.facility-details-heading {
+  margin: 0 0 5px 0;
+  text-shadow: 1px 1px 0 rgba(255,255,255,.8)
+}
+
+.site-footer {
+  margin: 20px 0;
+}
+
+.search-field-container {
+  background: #EEE;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+.back-to-search-container {
+  margin-bottom: 10px;
+}
+
+.facility-details-map {
+  background: #FFF;
+  padding: 4px;
+  border: 1px solid #CCC;
+  margin: 5px 0;
+}
+
+.facility-inspections-list {
+  .panel, .panel-title {
+    border-radius: 0;
+  }
+}

@@ -1,0 +1,36 @@
+.back-to-search-container
+  .container
+    if lastSearchTerm
+      a.btn.btn-default.btn-sm href="{{url 'home#search' lastSearchTerm}}"
+        i.fa.fa-chevron-left: |  Search
+    else
+      a.btn.btn-default.btn-sm href="{{url 'home#show'}}"
+        i.fa.fa-chevron-left: |  Search
+
+
+.facility-details style='background-image: linear-gradient(rgba(255,255,255,.9),rgba(255,255,255,0.7)), url({{streetViewURLLarge}})'
+  .container
+    .row
+      .col-sm-6
+        h2.facility-details-heading
+          | #{dba_name}
+        p
+          | {{address}}
+          br
+          | {{city}}, {{state}} {{zip}}
+          br
+          span class="label label-{{resultClass}}" #{results}
+          br
+          small last inspected #{mmddyy inspection_date}
+          br
+          small #{facility_type}
+
+      .col-sm-3
+        a href="http://maps.google.com/?q={{fullAddress}}"
+          img.img-responsive.facility-details-map src=mapURL
+      .col-sm-3
+        a href="http://maps.google.com/?q={{fullAddress}}"
+          img.img-responsive.facility-details-map src=streetViewURL
+
+.container
+  #facility-inspections

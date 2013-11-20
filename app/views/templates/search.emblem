@@ -1,0 +1,11 @@
+.container
+  .loading-indicator.text-center
+    p.lead
+      i.fa.fa-spinner.fa-spin
+      |  searching...
+
+  .no-results
+    p No results were found, check the spelling or try a different search
+
+  .list-group#search-results
+

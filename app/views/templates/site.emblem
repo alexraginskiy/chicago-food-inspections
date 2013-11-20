@@ -1,0 +1,13 @@
+.container
+  header
+    h4.text-center
+      a href="{{url 'home#show'}}" Chicago Food Inspection Search
+
+section.search-field
+section.main-content
+
+
+footer.site-footer
+  .container
+    p.text-center
+      | Chicago food inspections

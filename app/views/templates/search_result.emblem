@@ -1,0 +1,14 @@
+a.list-group-item href="{{url 'facility#show' license_}}"
+  .media
+    .pull-left
+      i class="fa fa-3x fa-fw {{resultIcon}} text-{{resultClass}}"
+    .pull-right
+      span class="label label-{{resultClass}}" {{results}}
+    .media-body
+      h5.media-heading {{dba_name}}
+
+      small {{fullAddress}}
+      br
+      small License # {{license_}}
+      br
+      small Inspected {{friendlyInspectionDate}}
