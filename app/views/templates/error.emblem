@@ -1,0 +1,7 @@
+.container
+  .row
+    .col-sm-6.col-sm-offset-3.text-center
+      h1 {{icon 'fa-3x fa-warning text-danger'}}
+
+      p.lead The data backing this app is controlled and delivered by the City of Chicago, and may not be available at all times.
+      p.lead Please try again later.

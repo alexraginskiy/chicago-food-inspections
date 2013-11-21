@@ -8,14 +8,11 @@ module.exports = class FacilityView extends View
   regions:
     'facilityInspections' : '#facility-inspections'
 
-  initialize: ->
-    super
-
   getTemplateData: ->
 
     mapImageWidth   = 380
     mapImageHeight  = 220
-    headerGradient  = 'linear-gradient(rgba(255,255,255,1),rgba(255,255,255,0.7) 100%)'
+    headerGradient  = 'linear-gradient(rgba(255,255,255,.95),rgba(255,255,255,0.7) 100%)'
 
     data                        = @model.attributes
     data.friendlyInspectionDate = @model.friendlyInspectionDate()

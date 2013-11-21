@@ -2,10 +2,10 @@
   .container
     if lastSearchTerm
       a.btn.btn-default.btn-sm href="{{url 'home#search' lastSearchTerm}}"
-        i.fa.fa-chevron-left: |  Search
+        | {{icon 'fa-chevron-left'}} Search
     else
       a.btn.btn-default.btn-sm href="{{url 'home#show'}}"
-        i.fa.fa-chevron-left: |  Search
+        | {{icon 'fa-chevron-left'}} Search
 
 
 .facility-details style='background-image: {{headerGradient}}, url({{streetViewURLLarge}})'

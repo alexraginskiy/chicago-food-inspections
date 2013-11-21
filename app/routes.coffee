@@ -3,3 +3,4 @@ module.exports = (match) ->
   match 'search/:query',     'home#search'
   match 'facility/:license', 'facility#show'
   match 'about',             'home#about'
+  match 'error',             'home#error'

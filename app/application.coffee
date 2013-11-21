@@ -7,3 +7,10 @@ module.exports = class Application extends Chaplin.Application
   initMediator: ->
     mediator.lastSearchTerm = ''
     super
+
+  start: ->
+    super
+    $(document).ajaxError @handleAjaxError
+
+  handleAjaxError: =>
+    Chaplin.helpers.redirectTo 'home#error'

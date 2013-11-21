@@ -1,12 +1,13 @@
 .container.search-results
-  .search-results-loading
-    i.fa.fa-spinner.fa-spin
 
-  .no-results
-    p No results were found, check the spelling or try a different search
+  .search-results-loading
+    | {{icon 'fa-cog fa-spin'}}
 
   .row
     .col-sm-8.col-sm-offset-2
       .search-details-container
       .list-group.search-results-list
 
+  .search-results-none
+    h1 {{icon 'fa-3x fa-warning text-warning'}}
+    p No results were found, check the spelling or try a different search

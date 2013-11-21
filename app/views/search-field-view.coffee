@@ -18,7 +18,7 @@ module.exports = class SearchFieldView extends View
     form = $ e.target
 
     input = form.find('input')
-    query = input.val()
+    query = encodeURI input.val()
 
     input.blur()
     Chaplin.helpers.redirectTo 'home#search', {query}

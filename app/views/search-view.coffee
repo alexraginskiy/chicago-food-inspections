@@ -9,7 +9,7 @@ module.exports = class SearchView extends CollectionView
   itemView: SearchResultView
   listSelector: '.search-results-list'
   loadingSelector: '.search-results-loading'
-  fallbackSelector: '.no-results'
+  fallbackSelector: '.search-results-none'
 
   useCssAnimation: true
   animationStartClass: 'fade'
@@ -23,5 +23,6 @@ module.exports = class SearchView extends CollectionView
     @renderResultDetails()
 
   renderResultDetails: ->
-    searchDetailsView = new SearchDetailsView region: 'searchDetails', collection: @collection
-    @subview 'searchDetails', searchDetailsView
+    if @collection.length
+      searchDetailsView = new SearchDetailsView region: 'searchDetails', collection: @collection
+      @subview 'searchDetails', searchDetailsView

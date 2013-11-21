@@ -34,3 +34,6 @@ register 'fromNow', (date)->
 
 register 'mmddyy', (date)->
   moment(date).format('M/D/YYYY')
+
+register 'icon', (iconClasses)->
+  return new Handlebars.SafeString "<i class='fa #{iconClasses}'></i>"
