@@ -15,7 +15,6 @@ module.exports = class FacilityView extends View
     headerGradient  = 'linear-gradient(rgba(255,255,255,.95),rgba(255,255,255,0.7) 100%)'
 
     data                        = @model.attributes
-    data.friendlyInspectionDate = @model.friendlyInspectionDate()
     data.resultClass            = @model.resultCSSClass()
     data.resultIcon             = @model.resultIcon()
     data.fullAddress            = @model.fullAddress()

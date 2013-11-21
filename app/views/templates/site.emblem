@@ -10,9 +10,4 @@ section.main-content
 footer.site-footer
   .container.text-center
     p.text-muted
-      a href="{{url 'home#about'}}" About
-      '  &sdot;
-      ' Created by
-      a href="https://github.com/alexraginskiy" Alex Raginskiy
-      '  &sdot;
-      a href="https://github.com/alexraginskiy/chicago-food-inspections" GitHub Project
+      | Created by {{linkTo "https://github.com/alexraginskiy" "Alex Raginskiy"}} &sdot; {{linkTo "https://github.com/alexraginskiy/chicago-food-inspections" "GitHub Project"}}

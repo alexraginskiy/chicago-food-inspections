@@ -1,3 +1,6 @@
 .container
   .text-center
     img.logo-image src="/images/chicago_health_logo.png"
+
+    p
+      a href="{{url 'home#about'}}" About

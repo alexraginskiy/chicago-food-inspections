@@ -9,7 +9,3 @@ module.exports = class SiteView extends View
     main: '.main-content'
 
   template: require './templates/site'
-
-  getTemplateData: ->
-    data =
-      year: moment().format('YYYY')

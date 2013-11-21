@@ -8,6 +8,7 @@
     "type": "git",
     "url": "http://github.com/alexraginskiy/chicago-food-inspections"
   },
+  "license": "MIT",
   "scripts": {
     "start": "brunch watch --server",
     "test": "brunch test"
