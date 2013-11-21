@@ -66,6 +66,12 @@ $container-lg: $container-desktop;
   margin: 0 0 30px;
 }
 
+.search-results-more {
+  background: $gray-lighter;
+  text-align: center;
+  cursor: pointer;
+}
+
 .back-to-search-container {
   margin-bottom: 10px;
 }

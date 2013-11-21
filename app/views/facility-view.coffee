@@ -19,8 +19,7 @@ module.exports = class FacilityView extends View
     data.resultIcon             = @model.resultIcon()
     data.fullAddress            = @model.fullAddress()
     data.mapURL                 = @model.mapURL(mapImageWidth, mapImageHeight)
-    data.streetViewURL          = @model.streetViewURL(mapImageWidth, mapImageHeight)
-    data.streetViewURLLarge     = @model.streetViewURL(1200, 600)
+    data.streetViewURL          = @model.streetViewURL(640, 371)
     data.lastSearchTerm         = mediator.lastSearchTerm
     data.headerGradient         = headerGradient
 

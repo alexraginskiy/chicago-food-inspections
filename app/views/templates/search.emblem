@@ -10,6 +10,7 @@
     .col-sm-8.col-sm-offset-2
       .search-details-container
       .list-group.search-results-list
+        .search-results-more-container
 
   .search-results-none
     h1 {{icon 'fa-3x fa-warning text-warning'}}

@@ -1,0 +1,6 @@
+a.list-group-item.list-group-item.search-results-more
+  .search-results-more-text
+    | Load more results...
+  .search-results-more-loading.hide
+    | {{icon 'fa-cog fa-spin'}}
+

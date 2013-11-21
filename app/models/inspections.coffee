@@ -13,9 +13,7 @@ module.exports = class Inspections extends Collection
   searchType: null
   searchString: null
 
-  search: (term, options={})->
-    options.reset = true
-
+  search: (term=@searchString, options={})->
     if /^\d{5}$/.test(term)
       @_searchByZip(term, options)
     else
@@ -33,9 +31,15 @@ module.exports = class Inspections extends Collection
     @searchType = 'text'
 
   _searchByZip: (zipcode, options={})->
-    @url = -> @urlRoot + "&zip=#{zipcode}"
+    @url = @urlRoot + "&zip=#{zipcode}"
     @_fetchSearch(options)
     @searchType = 'zip'
 
   _fetchSearch: (options)->
+
+    if @length >= DEFAULT_LIMIT
+      @url = "#{@url}&$offset=#{@length}"
+      options.remove = false
+
     @fetch(options)
+

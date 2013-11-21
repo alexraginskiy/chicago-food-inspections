@@ -2,6 +2,8 @@ Model = require 'models/base/model'
 
 module.exports = class Inspection extends Model
 
+  idAttribute: 'inspection_id'
+
   friendlyInspectionDate: ->
     inspectionDate = @get('inspection_date')
     formatted = moment(inspectionDate).fromNow()

@@ -1,7 +1,8 @@
-CollectionView = require 'views/base/collection-view'
+CollectionView    = require 'views/base/collection-view'
 
-SearchResultView = require 'views/search-result-view'
+SearchResultView  = require 'views/search-result-view'
 SearchDetailsView = require 'views/search-details-view'
+SearchGetMoreView = require 'views/search-get-more-view'
 
 module.exports = class SearchView extends CollectionView
   autoRender: true
@@ -17,6 +18,7 @@ module.exports = class SearchView extends CollectionView
 
   regions:
     'searchDetails' : '.search-details-container'
+    'searchGetMore' : '.search-results-more-container'
 
   initialize: ->
     super
@@ -30,6 +32,10 @@ module.exports = class SearchView extends CollectionView
     if @collection.length
       searchDetailsView = new SearchDetailsView region: 'searchDetails', collection: @collection
       @subview 'searchDetails', searchDetailsView
+
+      if @collection.length >= 20
+        getMoreResultsView = new SearchGetMoreView region: 'searchGetMore', collection: @collection
+        @subview 'searchGetMore', getMoreResultsView
 
   showLoadingTimeWarning: =>
     @$('.search-results-loading-time-warning').addClass('in')
