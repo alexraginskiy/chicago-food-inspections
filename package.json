@@ -21,7 +21,9 @@
     "uglify-js-brunch": ">= 1.0 < 1.8",
     "clean-css-brunch": ">= 1.0 < 1.8",
     "emblem-brunch": "~0.1.1",
-    "sass-brunch": "~1.7.2"
+    "sass-brunch": "~1.7.2",
+    "keyword-brunch": "~1.7.2",
+    "after-brunch": "0.0.4"
   },
   "devDependencies": {}
 }

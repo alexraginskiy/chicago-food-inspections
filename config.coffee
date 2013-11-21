@@ -14,3 +14,16 @@ exports.config =
       paths:
         handlebars: 'bower_components/handlebars/handlebars.js'
         emblem: 'bower_components/emblem.js/emblem.js'
+
+  keyword:
+    filePattern: /\.(js|css|html)$/
+
+    map:
+      assetPath: '/'
+      version: ''
+
+  overrides:
+    production:
+      keyword:
+        map:
+          assetPath: 'http://alexraginskiy.github.io/chicago-food-inspections/'

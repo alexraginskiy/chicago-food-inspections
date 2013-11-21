@@ -7,7 +7,8 @@
     "jquery": "~2.0.2",
     "emblem.js": "*",
     "momentjs": "~2.4.0",
-    "console-polyfill": "~0.1.0"
+    "console-polyfill": "~0.1.0",
+    "analytics": "~1.1.1"
   },
   "overrides": {
     "backbone": {

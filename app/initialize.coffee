@@ -6,5 +6,6 @@ $ ->
   window.app = new Application {
     title: 'Chicago Food Inspection',
     controllerSuffix: '-controller',
+    pushState: false,
     routes
   }
