@@ -18,9 +18,11 @@ module.exports = class HomeController extends Controller
 
   show: ->
     @view = new HomeView region: 'main'
+    analytics.page('Home')
 
   about: ->
     @view = new AboutView region: 'main'
+    analytics.page('Home')
 
   search: (params)->
     @collection = new Inspections
@@ -29,6 +31,8 @@ module.exports = class HomeController extends Controller
     @collection.search(params.query)
 
     mediator.publish 'search', decodeURI(params.query)
+    analytics.page('Home', {term: params.query})
 
   error: ->
     @view = new ErrorView region: 'main'
+    analytics.page('Error')

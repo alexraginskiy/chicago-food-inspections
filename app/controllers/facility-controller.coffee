@@ -15,3 +15,6 @@ module.exports = class FacilityController extends Controller
         @facilityView = new FacilityView model: @facility, region: 'main'
 
         @facilityInspectionView = new FacilityInspectionsView collection: @facilityInspections, region: 'facilityInspections'
+
+
+    analytics.page('Facility', {license: params.license})
