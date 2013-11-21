@@ -18,6 +18,10 @@ module.exports = class SearchView extends CollectionView
   regions:
     'searchDetails' : '.search-details-container'
 
+  initialize: ->
+    super
+    @loadingTimeWarningTimeout = window.setTimeout(@showLoadingTimeWarning, 3000)
+
   itemsReset: ->
     super
     @renderResultDetails()
@@ -26,3 +30,6 @@ module.exports = class SearchView extends CollectionView
     if @collection.length
       searchDetailsView = new SearchDetailsView region: 'searchDetails', collection: @collection
       @subview 'searchDetails', searchDetailsView
+
+  showLoadingTimeWarning: =>
+    @$('.search-results-loading-time-warning').addClass('in')

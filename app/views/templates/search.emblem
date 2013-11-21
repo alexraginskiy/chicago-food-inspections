@@ -1,7 +1,10 @@
 .container.search-results
 
-  .search-results-loading.loading-indicator
-    | {{icon 'fa-cog fa-spin'}}
+  .search-results-loading
+    .loading-indicator
+      | {{icon 'fa-cog fa-spin'}}
+    .search-results-loading-time-warning.text-center.text-muted.fade
+      | It's taking a bit to get data...government database, you know?
 
   .row
     .col-sm-8.col-sm-offset-2
