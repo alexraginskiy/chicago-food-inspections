@@ -33,9 +33,9 @@ module.exports = class SearchView extends CollectionView
       searchDetailsView = new SearchDetailsView region: 'searchDetails', collection: @collection
       @subview 'searchDetails', searchDetailsView
 
-      if @collection.length >= 20
-        getMoreResultsView = new SearchGetMoreView region: 'searchGetMore', collection: @collection
-        @subview 'searchGetMore', getMoreResultsView
+    if @collection.responseLength >= @collection.limit
+      getMoreResultsView = new SearchGetMoreView region: 'searchGetMore', collection: @collection
+      @subview 'searchGetMore', getMoreResultsView
 
   showLoadingTimeWarning: =>
     @$('.search-results-loading-time-warning').addClass('in')

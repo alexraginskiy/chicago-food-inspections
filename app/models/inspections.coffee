@@ -2,16 +2,27 @@ Collection = require './base/collection'
 Inspection = require 'models/inspection'
 
 DEFAULT_LIMIT = 20
-DEFAULT_COLUMNS = ['dba_name', 'address', 'city', 'state', 'zip', 'results', 'inspection_date', 'inspection_id', 'inspection_type', 'license_']
+DEFAULT_COLUMNS = ['dba_name', 'aka_name', 'address', 'city', 'state', 'zip', 'results', 'inspection_date', 'inspection_id', 'inspection_type', 'license_']
 
 module.exports = class Inspections extends Collection
-
 
   model: Inspection
   urlRoot: "http://data.cityofchicago.org/resource/4ijn-s7e5.json?$limit=#{DEFAULT_LIMIT}&$select=#{DEFAULT_COLUMNS.join(',')}"
 
+  limit: DEFAULT_LIMIT
+  responseLength: 0
   searchType: null
   searchString: null
+
+  parse: (response)->
+    @responseLength = @responseLength + response.length
+    groupedFacilities = _.groupBy(response, 'license_')
+
+    lastInspections = _.map groupedFacilities, (inspections, facility)->
+      inspections[0]
+
+    (_.sortBy lastInspections, 'inspection_date').reverse()
+
 
   search: (term=@searchString, options={})->
     if /^\d{5}$/.test(term)
@@ -37,8 +48,8 @@ module.exports = class Inspections extends Collection
 
   _fetchSearch: (options)->
 
-    if @length >= DEFAULT_LIMIT
-      @url = "#{@url}&$offset=#{@length}"
+    if @responseLength >= DEFAULT_LIMIT
+      @url = "#{@url}&$offset=#{@responseLength}"
       options.remove = false
 
     @fetch(options)

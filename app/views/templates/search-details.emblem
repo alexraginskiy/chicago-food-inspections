@@ -1,2 +1,4 @@
 .search-details
-  | showing {{searchResultString}}
+  strong
+    ' showing {{searchResultString}}
+  ' &sdot;

@@ -2,9 +2,8 @@ a.list-group-item href="{{url 'facility#show' license_}}"
   .media
     .pull-left
       i class="fa fa-3x fa-fw {{resultIcon}}"
-    .pull-right
-      span class="label label-{{resultClass}}" {{results}}
     .media-body
+      span class="pull-right label label-{{resultClass}}" {{results}}
       h5.media-heading {{dba_name}}
 
       small {{fullAddress}}
