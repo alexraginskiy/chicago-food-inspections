@@ -1,11 +1,18 @@
 div class="panel panel-{{resultClass}}"
   .panel-heading
     h4.panel-title
-      a data-toggle="collapse" data-parent="#facility-inspections-list" href="#facility-inspection-{{inspection_id}}"
+      if violations
+        a data-toggle="collapse" data-parent=".facility-inspections-list" href="#facility-inspection-{{inspection_id}}"
+          .row
+            .col-xs-6
+              | {{icon 'fa-plus-circle fa-fw'}} {{mmddyy inspection_date}}
+            .col-xs-6
+              span class="pull-right label label-{{resultClass}}" #{results}
+      else
         .row
-          .col-xs-9
-            | {{mmddyy inspection_date}}
-          .col-xs-3
+          .col-xs-6
+            | {{icon 'fa-fw'}} {{mmddyy inspection_date}}
+          .col-xs-6
             span class="pull-right label label-{{resultClass}}" #{results}
   if violations
     .panel-collapse.collapse  id="facility-inspection-{{inspection_id}}"

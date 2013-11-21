@@ -1,6 +1,6 @@
 .container.search-results
 
-  .search-results-loading
+  .search-results-loading.loading-indicator
     | {{icon 'fa-cog fa-spin'}}
 
   .row

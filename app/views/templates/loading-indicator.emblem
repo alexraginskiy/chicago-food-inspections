@@ -1,0 +1,2 @@
+.container.loading-indicator
+  | {{icon 'fa-cog fa-spin'}}
