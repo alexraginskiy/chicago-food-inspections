@@ -1,11 +1,19 @@
 .back-to-search-container
   .container
-    if lastSearchTerm
-      a.btn.btn-default.btn-sm href="{{url 'home#search' lastSearchTerm}}"
-        | {{icon 'fa-chevron-left'}} Search
+    if searchString
+      if searchRadius
+        a.btn.btn-default.btn-sm href="{{url 'keywordGeosearch' searchString searchRadius}}"
+          | {{icon 'fa-chevron-left'}} Search
+      else
+        a.btn.btn-default.btn-sm href="{{url 'search' searchString}}"
+          | {{icon 'fa-chevron-left'}} Search
     else
-      a.btn.btn-default.btn-sm href="{{url 'home#show'}}"
-        | {{icon 'fa-chevron-left'}} Search
+      if searchRadius
+        a.btn.btn-default.btn-sm href="{{url 'geosearch' searchRadius}}"
+          | {{icon 'fa-chevron-left'}} Search
+      else
+        a.btn.btn-default.btn-sm href="{{url 'home#show'}}"
+          | {{icon 'fa-chevron-left'}} Search
 
 
 .facility-details style='background-image: {{headerGradient}}, url({{streetViewURL}})'

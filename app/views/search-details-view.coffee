@@ -6,13 +6,20 @@ module.exports = class SearchResultView extends View
   template: require './templates/search-details'
 
   getTemplateData: ->
-    searchType = @collection.searchType
+    searchType =   @collection.searchType
     searchString = @collection.searchString
+    searchRadius = @collection.searchRadius
 
     if searchType == 'zip'
       searchResultString = "inspections in #{searchString}"
     if searchType == 'text'
       searchResultString = "results for \"#{searchString}\""
+
+    if searchType == 'geo'
+      if searchString
+        searchResultString = "results for \"#{searchString}\" within #{searchRadius} mile(s)"
+      else
+        searchResultString = "results within #{searchRadius} mile(s)"
 
     data =
       length:             @collection.length

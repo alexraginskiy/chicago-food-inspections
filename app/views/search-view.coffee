@@ -23,6 +23,7 @@ module.exports = class SearchView extends CollectionView
   initialize: ->
     super
     @loadingTimeWarningTimeout = window.setTimeout(@showLoadingTimeWarning, 3000)
+    @listenTo @collection, 'fetchedAllSearchResults', @hideGetMoreView
 
   itemsReset: ->
     super
@@ -37,5 +38,13 @@ module.exports = class SearchView extends CollectionView
       getMoreResultsView = new SearchGetMoreView region: 'searchGetMore', collection: @collection
       @subview 'searchGetMore', getMoreResultsView
 
+  hideGetMoreView: ->
+    @removeSubview 'searchGetMore'
+
   showLoadingTimeWarning: =>
+    return if @disposed
     @$('.search-results-loading-time-warning').addClass('in')
+
+  dispose: ->
+    super
+    window.clearTimeout(@loadingTimeWarningTimeout)

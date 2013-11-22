@@ -1,3 +1,5 @@
+Geo = require 'lib/geolocation'
+
 Collection = require './base/collection'
 Inspection = require 'models/inspection'
 
@@ -11,12 +13,17 @@ module.exports = class Inspections extends Collection
 
   limit: DEFAULT_LIMIT
   responseLength: 0
+
   searchType: null
   searchString: null
+  searchBoundingRect: null
+  searchRadius: null
 
   parse: (response)->
     # set the length of the response to keep track of offset for future requests
     @responseLength = @responseLength + response.length
+
+    @trigger 'fetchedAllSearchResults' if response.length < @limit
 
     # group the response by 'license_' to eliminate past entries for the same facility
     groupedFacilities = _.groupBy(response, 'license_')
@@ -35,13 +42,43 @@ module.exports = class Inspections extends Collection
     (_.sortBy inspectionsToAdd, 'inspection_date').reverse()
 
 
-  search: (term=@searchString, options={})->
-    if /^\d{5}$/.test(term)
-      @_searchByZip(term, options)
-    else
-      @_searchByText(term, options)
+  setSearchString: (searchString)->
+    @searchString = decodeURI searchString
 
-    @searchString = decodeURI(term)
+  geosearch: (lat=@searchBoundingRect.centerLat, lng=@searchBoundingRect.centerLng, radius=@searchBoundingRect.radius, options={})->
+    # get the bounding rectangle
+    bounds = Geo.boundingRect(41.986248, -87.694033, radius)
+
+    # set the collections search properties for future searches without arguments
+    @searchType         = 'geo'
+    @searchBoundingRect = bounds
+    @searchRadius       = radius
+
+    # set the $where data for the request
+    options.data =
+      '$where': bounds.toQuery()
+
+    # check if we're including a text search with this request
+    # are we passing a search query?
+    if options.query?
+      options.data['$q'] = options.query
+      @setSearchString(options.query)
+
+    # was there a search query in the past, and should we use it?
+    else if @searchString?
+      options.data['$q'] = @searchString
+
+    # trigger the fetch
+    @_fetchSearch(options)
+
+  search: (searchString=@searchString, options={})->
+
+    if /^\d{5}$/.test(searchString)
+      @_searchByZip(searchString, options)
+    else
+      @_searchByText(searchString, options)
+
+    @setSearchString(searchString)
 
   searchByLicense: (license, options={})->
     @url = @urlRoot + "&$where=license_=#{license}"
@@ -62,11 +99,10 @@ module.exports = class Inspections extends Collection
     @searchType = 'zip'
 
   _fetchSearch: (options)->
-
+    # is this fetch looking for more results of an existing search?
     if @responseLength >= DEFAULT_LIMIT
       options.data = options.data || {}
       options.data['$offset'] = @responseLength
       options.remove = false
 
     @fetch(options)
-

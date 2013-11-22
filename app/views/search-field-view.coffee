@@ -5,20 +5,42 @@ module.exports = class SearchFieldView extends View
   autoRender: true
   template: require './templates/search-field'
   events:
-    'submit #search-form' : 'search'
+    'submit #search-form'     : 'search'
+    'click .search-location' : 'geosearch'
 
   listen:
     'search mediator' : 'updateSearchField'
 
-  updateSearchField: (query)->
-    @$('#search-field').val(query)
+  getTemplateData: ->
+    geolocation: 'geolocation' of navigator
+
+  updateSearchField: (searchResults)->
+    @$('#search-field').val(searchResults.searchString)
 
   search: (e)->
     e?.preventDefault()
-    form = $ e.target
+    form = $(e.target)
 
-    input = form.find('input')
-    query = encodeURI input.val()
+    query = @getQuery()
 
-    input.blur()
-    Chaplin.helpers.redirectTo 'home#search', {query}
+    @getSearchField().blur()
+    Chaplin.helpers.redirectTo 'search', {query}
+
+  geosearch: (e)->
+    e?.preventDefault()
+    link = $(e.target)
+
+    radius       = link.data('radius')
+    query        = @getQuery()
+
+    searchRoute  = if query then 'keywordGeosearch' else 'geosearch'
+
+    Chaplin.helpers.redirectTo searchRoute, {radius, query}
+
+
+  getSearchField: ->
+    @$('#search-field')
+
+  getQuery: ->
+    searchField = @getSearchField()
+    encodeURI $.trim(searchField.val())

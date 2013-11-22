@@ -1,0 +1,26 @@
+.logo {
+  text-align: center;
+  font-size: $font-size-h4;
+  margin: 20px 0;
+
+  a {
+    text-decoration: none;
+    color: #ec0801;
+  }
+}
+
+.logo-image {
+  @include img-responsive(inline-block);
+}
+
+.site-footer {
+  margin: 20px 0;
+}
+
+.loading-indicator {
+  text-align: center;
+  padding: 40px 0;
+  font-size: floor($font-size-base * 4);
+  font-weight: 200;
+  color: $gray-light;
+}

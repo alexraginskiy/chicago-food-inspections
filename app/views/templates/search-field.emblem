@@ -1,6 +1,19 @@
 .search-field-container
-  .container
-    .row
-      .col-sm-6.col-sm-offset-3
-        form#search-form
-          input.#search-field.form-control type="search" name="search" placeholder="Search by zipcode or business name"
+  form#search-form
+    .container
+      .row
+        .col-sm-6.col-sm-offset-3
+
+          if geolocation
+            .input-group
+              input.#search-field.form-control type="text" name="search" placeholder="Search by zipcode or business name"
+              span.input-group-btn
+                button.btn.btn-primary.dropdown-toggle type="button" data-toggle="dropdown" {{icon 'fa-map-marker'}} {{icon 'fa-caret-down'}}
+                ul.dropdown-menu.pull-right role="menu"
+                  li.dropdown-header Search within...
+                  li.divider
+                  li: a.search-location href="#" data-radius="1-mile" 1 mile
+                  li: a.search-location href="#" data-radius="5-miles" 5 miles
+
+          else
+            input.#search-field.form-control type="text" name="search" placeholder="Search by zipcode or business name"

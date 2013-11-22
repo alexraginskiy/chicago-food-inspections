@@ -1,5 +1,7 @@
 Model = require 'models/base/model'
 
+GOOGLE_MAPS_API_KEY = 'AIzaSyAsTTQbxN97tw3vWmz5U54Z73begQqA-iE'
+
 module.exports = class Inspection extends Model
 
   idAttribute: 'inspection_id'
@@ -48,7 +50,7 @@ module.exports = class Inspection extends Model
     "#{address}, #{city}, #{state} #{zip}"
 
   mapURL: (width=380, height=380)->
-    encodeURI "http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=#{width}x#{height}&sensor=false&markers=size:mid|color:red|#{@fullAddress()}"
+    encodeURI "http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=#{width}x#{height}&sensor=false&markers=size:mid|color:red|#{@fullAddress()}&key=#{GOOGLE_MAPS_API_KEY}"
 
   streetViewURL: (width=380, height=380)->
-    encodeURI "http://maps.googleapis.com/maps/api/streetview?size=#{width}x#{height}&location=#{@fullAddress()}&fov=90&sensor=false"
+    encodeURI "http://maps.googleapis.com/maps/api/streetview?size=#{width}x#{height}&location=#{@fullAddress()}&fov=90&sensor=false&key=#{GOOGLE_MAPS_API_KEY}"

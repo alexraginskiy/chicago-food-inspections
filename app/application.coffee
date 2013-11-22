@@ -5,7 +5,7 @@ module.exports = class Application extends Chaplin.Application
   title: 'Chicago Food Inspection'
 
   initMediator: ->
-    mediator.lastSearchTerm = ''
+    mediator.searchResults = undefined
     super
 
   start: ->

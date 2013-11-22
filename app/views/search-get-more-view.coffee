@@ -13,7 +13,10 @@ module.exports = class SearchGetMoreView extends View
     @listenTo @collection, 'synced', @hideLoading
 
   fetchMoreResults: ->
-    @collection.search()
+    if @collection.searchType == 'geo'
+      @collection.geosearch()
+    else
+      @collection.search()
 
   showLoading: ->
     @$('.search-results-more-text').addClass('hide')

@@ -22,6 +22,10 @@ exports.config =
       assetPath: '/'
       version: ''
 
+  plugins:
+    sass:
+      options: ['--precision', '16']
+
   overrides:
     production:
       keyword:
