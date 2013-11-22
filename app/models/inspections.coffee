@@ -49,7 +49,7 @@ module.exports = class Inspections extends Collection
 
   _searchByText: (name, options={})->
     options.data =
-        '$q': "#{name}"
+        '$q': "#{decodeURI name}"
 
     @_fetchSearch(options)
     @searchType = 'text'
