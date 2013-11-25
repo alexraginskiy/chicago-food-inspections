@@ -9,10 +9,15 @@ DEFAULT_COLUMNS = ['dba_name', 'aka_name', 'address', 'city', 'state', 'zip', 'r
 module.exports = class Inspections extends Collection
 
   model: Inspection
-  url: ->
-    "http://data.cityofchicago.org/resource/4ijn-s7e5.json?$limit=#{@limit}&$select=#{DEFAULT_COLUMNS.join(',')}"
+  url: "http://data.cityofchicago.org/resource/4ijn-s7e5.json"
 
   limit: DEFAULT_LIMIT
+  columns: do -> DEFAULT_COLUMNS.join(',')
+
+  getDefaultData: ->
+    '$limit'  : @limit
+    '$select' : @columns
+
   responseLength: 0
 
   searchType: null
@@ -60,6 +65,7 @@ module.exports = class Inspections extends Collection
     if options.query?
       options.data['$q'] = options.query
       @_setSearchString(options.query)
+      delete options.query
 
     # was there a search query in the past, and should we use it?
     else if @searchString?
@@ -95,13 +101,14 @@ module.exports = class Inspections extends Collection
     @_fetchSearch(options)
     @searchType = 'zip'
 
-  _fetchSearch: (options)->
+  _fetchSearch: (options={})->
     # is this fetch looking for more results of an existing search?
     if @responseLength >= @limit
       options.data = options.data || {}
       options.data['$offset'] = @responseLength
       options.remove = false
 
+    options.data = _.extend @getDefaultData(), options.data
     @fetch(options)
 
   _setSearchString: (searchString)->
