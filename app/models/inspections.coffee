@@ -47,7 +47,7 @@ module.exports = class Inspections extends Collection
 
   geosearch: (lat=@searchBoundingRect.centerLat, lng=@searchBoundingRect.centerLng, radius=@searchBoundingRect.radius, options={})->
     # get the bounding rectangle
-    bounds = Geo.boundingRect(41.986248, -87.694033, radius)
+    bounds = Geo.boundingRect(lat, lng, radius)
 
     # set the collections search properties for future searches without arguments
     @searchType         = 'geo'

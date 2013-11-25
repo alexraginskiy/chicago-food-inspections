@@ -1,5 +1,4 @@
 exports.config =
-  # See http://brunch.io/#documentation for docs.
   files:
     javascripts:
       joinTo:
@@ -28,6 +27,9 @@ exports.config =
 
   overrides:
     production:
+      paths:
+        public: '../inspections-production'
+
       keyword:
         map:
           assetPath: 'http://alexraginskiy.github.io/chicago-food-inspections/'
