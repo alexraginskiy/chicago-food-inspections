@@ -1,0 +1,1 @@
+window.require.list().filter((name)-> /-test$/.test(name)).forEach require

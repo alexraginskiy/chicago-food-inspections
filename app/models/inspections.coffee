@@ -9,7 +9,8 @@ DEFAULT_COLUMNS = ['dba_name', 'aka_name', 'address', 'city', 'state', 'zip', 'r
 module.exports = class Inspections extends Collection
 
   model: Inspection
-  url: "http://data.cityofchicago.org/resource/4ijn-s7e5.json?$limit=#{DEFAULT_LIMIT}&$select=#{DEFAULT_COLUMNS.join(',')}"
+  url: ->
+    "http://data.cityofchicago.org/resource/4ijn-s7e5.json?$limit=#{@limit}&$select=#{DEFAULT_COLUMNS.join(',')}"
 
   limit: DEFAULT_LIMIT
   responseLength: 0
@@ -41,10 +42,6 @@ module.exports = class Inspections extends Collection
     # sort the response by latest
     (_.sortBy inspectionsToAdd, 'inspection_date').reverse()
 
-
-  setSearchString: (searchString)->
-    @searchString = decodeURI searchString
-
   geosearch: (lat=@searchBoundingRect.centerLat, lng=@searchBoundingRect.centerLng, radius=@searchBoundingRect.radius, options={})->
     # get the bounding rectangle
     bounds = Geo.boundingRect(lat, lng, radius)
@@ -62,7 +59,7 @@ module.exports = class Inspections extends Collection
     # are we passing a search query?
     if options.query?
       options.data['$q'] = options.query
-      @setSearchString(options.query)
+      @_setSearchString(options.query)
 
     # was there a search query in the past, and should we use it?
     else if @searchString?
@@ -78,7 +75,7 @@ module.exports = class Inspections extends Collection
     else
       @_searchByText(searchString, options)
 
-    @setSearchString(searchString)
+    @_setSearchString(searchString)
 
   searchByLicense: (license, options={})->
     @url = @urlRoot + "&$where=license_=#{license}"
@@ -100,9 +97,12 @@ module.exports = class Inspections extends Collection
 
   _fetchSearch: (options)->
     # is this fetch looking for more results of an existing search?
-    if @responseLength >= DEFAULT_LIMIT
+    if @responseLength >= @limit
       options.data = options.data || {}
       options.data['$offset'] = @responseLength
       options.remove = false
 
     @fetch(options)
+
+  _setSearchString: (searchString)->
+    @searchString = decodeURI searchString
