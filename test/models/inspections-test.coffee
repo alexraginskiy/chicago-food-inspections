@@ -2,7 +2,7 @@ Geo         = require 'lib/geolocation'
 Inspections = require 'models/inspections'
 Collection  = require 'models/base/collection'
 
-describe 'Inspections', ->
+describe 'Inspections collection', ->
 
   beforeEach ->
     @server = sinon.fakeServer.create()
@@ -18,6 +18,7 @@ describe 'Inspections', ->
     @fetchSpy   = sinon.spy Inspections::, 'fetch'
 
   afterEach ->
+    @inspections.dispose()
     @server.restore()
     @triggerSpy.restore()
     @fetchSpy.restore()

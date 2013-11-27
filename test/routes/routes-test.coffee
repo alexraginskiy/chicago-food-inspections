@@ -21,6 +21,9 @@ describe 'Routes', ->
       handler = @findHandler(matchString)
       handler.route.extractParams matchString
 
+  afterEach ->
+    @router.dispose()
+
   it 'should route / to home#show', ->
     expect(@findMatch '').to.equal 'home#show'
 

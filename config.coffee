@@ -7,11 +7,10 @@ exports.config =
         'test/javascripts/test.js': /^test(\/|\\)(?!vendor)/
         'test/javascripts/test-vendor.js': /^test(\/|\\)(?=vendor)/
 
-      # joinTo:
-      #   'javascripts/app.js': /^app/
-      #   'javascripts/vendor.js': /^vendor/
-      #   'test/javascripts/test.js': /^test(\/|\\)(?!vendor)/
-      #   'test/javascripts/test-vendor.js': /^test(\/|\\)(?=vendor)/
+      order:
+        after: [
+          'test/vendor/scripts/chai-jquery.js'
+        ]
 
     stylesheets:
       joinTo:

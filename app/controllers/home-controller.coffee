@@ -15,12 +15,12 @@ module.exports = class HomeController extends Controller
 
   show: ->
     @view = new HomeView region: 'main'
-    analytics.page('Home')
+    analytics?.page('Home')
 
   about: ->
     @view = new AboutView region: 'main'
-    analytics.page('About')
+    analytics?.page('About')
 
   error: ->
     @view = new ErrorView region: 'main'
-    analytics.page('Error')
+    analytics?.page('Error')

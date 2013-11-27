@@ -21,4 +21,4 @@ module.exports = class FacilityController extends Controller
         @facilityInspectionView = new FacilityInspectionsView collection: @facilityInspections, region: 'facilityInspections'
 
 
-    analytics.page('Facility', {license: params.license})
+    analytics?.page('Facility', {license: params.license})
