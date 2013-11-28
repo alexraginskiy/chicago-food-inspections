@@ -34,7 +34,7 @@ describe 'SearchController', ->
       page: sinon.spy()
 
   afterEach ->
-    Chaplin.mediator.removeHandlers ['region:show']
+    Chaplin.mediator.removeHandlers ['region:show', 'region:register']
     Chaplin.helpers.reverse.restore()
 
     @publishStub.restore()
@@ -92,49 +92,52 @@ describe 'SearchController', ->
         it 'should call analytics', ->
           expect(window.analytics.page).to.have.been.calledWith 'Text Search', term: 'some query'
 
-    describe '#geosearch()', ->
 
-      beforeEach ->
-        @geoSearchStub = sinon.stub Inspections::, 'geosearch'
-
-        @getCurrentPositionStub = sinon.stub navigator.geolocation, 'getCurrentPosition'
-        # let's assume the sad path and call the error callback in these scenarios
-        @getCurrentPositionStub.callsArgWith 0, coords: {latitude: 123, longitude: 321}
-
-      afterEach ->
-        @geoSearchStub.restore()
-        @getCurrentPositionStub.restore()
-
-      describe 'setup', ->
+    # phantom js doesn't supoort geolocation
+    if navigator.geolocation?
+      describe '#geosearch()', ->
 
         beforeEach ->
-          @controller.geosearch({})
+          @geoSearchStub = sinon.stub Inspections::, 'geosearch'
 
-        it 'should show loading indicator', ->
-          expect(@controller.view.$('.search-results-loading')).to.have.attr('style').match /display: block/
+          @getCurrentPositionStub = sinon.stub navigator.geolocation, 'getCurrentPosition'
+          # let's assume the sad path and call the error callback in these scenarios
+          @getCurrentPositionStub.callsArgWith 0, coords: {latitude: 123, longitude: 321}
 
-        it 'should redirect to home when radius is not valid', ->
-          expect(@redirectStub).to.have.been.calledWith 'home#show'
+        afterEach ->
+          @geoSearchStub.restore()
+          @getCurrentPositionStub.restore()
 
-          @controller.geosearch radius: 'not a valid radius'
-          expect(@redirectStub).to.have.been.calledTwice
+        describe 'setup', ->
 
-      describe 'searching', ->
+          beforeEach ->
+            @controller.geosearch({})
 
-        beforeEach ->
-          @controller.geosearch radius: '5-miles', query: 'some query'
+          it 'should show loading indicator', ->
+            expect(@controller.view.$('.search-results-loading')).to.have.attr('style').match /display: block/
 
-        it 'should not redirect with proper radius', ->
-          expect(@redirectStub).not.to.have.been.calledTwice
+          it 'should redirect to home when radius is not valid', ->
+            expect(@redirectStub).to.have.been.calledWith 'home#show'
 
-        it 'should request the current position', ->
-          expect(@getCurrentPositionStub).to.have.been.called
+            @controller.geosearch radius: 'not a valid radius'
+            expect(@redirectStub).to.have.been.calledTwice
 
-        it 'should call geosearch on inspections', ->
-          expect(@geoSearchStub).to.have.been.calledWith 123, 321, 5, query: 'some query'
+        describe 'searching', ->
 
-        it 'should publish search event', ->
-          expect(@publishStub).to.have.been.calledWith 'search', @controller.collection
+          beforeEach ->
+            @controller.geosearch radius: '5-miles', query: 'some query'
 
-        it 'should call analytics', ->
-          expect(window.analytics.page).to.have.been.calledWith 'Geo Search', {radius: 5, term: 'some query'}
+          it 'should not redirect with proper radius', ->
+            expect(@redirectStub).not.to.have.been.calledTwice
+
+          it 'should request the current position', ->
+            expect(@getCurrentPositionStub).to.have.been.called
+
+          it 'should call geosearch on inspections', ->
+            expect(@geoSearchStub).to.have.been.calledWith 123, 321, 5, query: 'some query'
+
+          it 'should publish search event', ->
+            expect(@publishStub).to.have.been.calledWith 'search', @controller.collection
+
+          it 'should call analytics', ->
+            expect(window.analytics.page).to.have.been.calledWith 'Geo Search', {radius: 5, term: 'some query'}
