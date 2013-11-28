@@ -15,6 +15,7 @@ module.exports = class Inspection extends Model
     violations = @get('violations')
     violations = violations.replace(/\|/g, '<br/><br/>')
     violations = violations.replace(/Comments:/g, '<br/>Comments:')
+
   resultCSSClass: ->
     result = @get('results').toLowerCase()
     if result == 'fail'

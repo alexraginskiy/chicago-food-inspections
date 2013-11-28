@@ -1,6 +1,6 @@
 View = require 'views/base/view'
 
-module.exports = class SearchResultView extends View
+module.exports = class SearchDetailsView extends View
   autoRender: true
   noWrap: true
   template: require './templates/search-details'

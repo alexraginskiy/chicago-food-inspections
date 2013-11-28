@@ -5,7 +5,6 @@ SearchDetailsView = require 'views/search-details-view'
 SearchGetMoreView = require 'views/search-get-more-view'
 
 module.exports = class SearchView extends CollectionView
-  autoRender: true
   template: require './templates/search'
   itemView: SearchResultView
   listSelector: '.search-results-list'
