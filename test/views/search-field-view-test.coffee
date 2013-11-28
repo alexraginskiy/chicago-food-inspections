@@ -18,12 +18,19 @@ describe 'SearchFieldView', ->
   it 'should have a search field', ->
     expect(@view.$('input#search-field')).to.exist
 
-  it 'should redirect to search when form is submitted', ->
-    query = '   some search text   '
-    @view.$('#search-field').val(query)
-    @view.$('#search-form').submit()
+  describe 'searching', ->
 
-    expect(@redirectToStub).to.have.been.calledWith 'search', query: 'some%20search%20text'
+    beforeEach ->
+      query = '   some search text   '
+      @view.$('#search-field').val(query)
+
+    it 'should redirect to search when form is submitted', ->
+      @view.$('#search-form').submit()
+      expect(@redirectToStub).to.have.been.calledWith 'search', query: 'some%20search%20text'
+
+    it 'should redirect to search when search anywhere is clicked', ->
+      @view.$('.search-anywhere').click()
+      expect(@redirectToStub).to.have.been.calledWith 'search', query: 'some%20search%20text'
 
   it 'should update searchfield value when a search is triggered', ->
     Chaplin.mediator.publish 'search', searchString: 'some search text'

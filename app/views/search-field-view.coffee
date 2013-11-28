@@ -6,8 +6,9 @@ module.exports = class SearchFieldView extends View
   noWrap: true
   template: require './templates/search-field'
   events:
-    'submit #search-form'     : 'search'
+    'submit #search-form'    : 'search'
     'click .search-location' : 'geosearch'
+    'click .search-anywhere' : 'search'
 
   listen:
     'search mediator' : 'updateSearchField'
@@ -20,11 +21,10 @@ module.exports = class SearchFieldView extends View
 
   search: (e)->
     e?.preventDefault()
-    form = $(e.target)
 
     query = @getQuery()
-
     @getSearchField().blur()
+
     Chaplin.helpers.redirectTo 'search', {query}
 
   geosearch: (e)->

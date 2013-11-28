@@ -12,6 +12,7 @@
                 ul.dropdown-menu.pull-right role="menu"
                   li.dropdown-header Search within...
                   li.divider
+                  li: a.search-anywhere href="#" Anywhere
                   li: a.search-location href="#" data-radius="1-mile" 1 mile
                   li: a.search-location href="#" data-radius="5-miles" 5 miles
 
