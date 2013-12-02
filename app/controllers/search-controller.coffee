@@ -21,7 +21,7 @@ module.exports = class SearchController extends Controller
   search: (params)->
     if params.query
       @collection.search params.query
-      @publish 'search', @collection
+      mediator.publish 'search', @collection
 
       analytics?.page('Text Search', {term: params.query})
 
@@ -53,7 +53,7 @@ module.exports = class SearchController extends Controller
       lng = position.coords.longitude
 
       @collection.geosearch lat, lng, radius, query: params.query
-      @publish 'search', @collection
+      mediator.publish 'search', @collection
       analytics?.page('Geo Search', {radius: radius, term: params.query})
 
     # handle geolocation errors
