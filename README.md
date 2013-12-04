@@ -5,6 +5,38 @@
 
 JavaScript app to search and view Chicago Department of Public Health’s Food Protection's inspections
 
+Try it live at http://alexraginskiy.github.io/chicago-food-inspections/
+
+## About the project
+
+This is a demonstration of building a web-app that connects to the City of Chicago Data Portal.
+It was written primarily in CoffeeScript using [Backbone.js](http://backbonejs.org/) and the [Chaplin framework](http://chaplinjs.org/) and assembled with [Brunch](http://brunch.io).
+
+Currently, it connects directly to the data source using your web browser. It is hosted and served as static assets via GitHub. To learn more about the data set powering the results from this app, visit the [City of Chicago Data Portal](https://data.cityofchicago.org/Health-Human-Services/Food-Inspections/4ijn-s7e5).
+
+The next phase of this project will include a replicated copy of the data set being served by a custom web app to allow better search results.
+
+## Installing
+
+If you wish to install and run this locally, you will need:
+* Node.js and NPM (tested and developed on v0.10.21)
+* Brunch [brunch.io](http://brunch.io) `npm install -g brunch`
+* Ruby and Sass Gem (for building stylesheets)
+
+To install:
+* Clone this repo using git
+* Run `npm install` & `bower install` in the cloned directory
+* Run `brunch watch --server` to build and start a local web server
+
+Running tests:
+* In browser
+  * Run `brunch watch --server` to build and start a local web server
+  * Visit http://localhost:3333/test/
+* Headless: 
+  * Install [phantomjs](http://phantomjs.org/) and [mocha-phantomjs](https://github.com/metaskills/mocha-phantomjs)
+  * Run `npm test` in the project directory
+
+For more information on building and developing this app, see [Chaplin.js](http://chaplinjs.org/) and [Brunch](http://brunch.io)
 
 ### License
 
