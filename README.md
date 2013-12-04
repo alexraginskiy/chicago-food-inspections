@@ -20,7 +20,8 @@ The next phase of this project will include a replicated copy of the data set be
 
 If you wish to install and run this locally, you will need:
 * Node.js and NPM (tested and developed on v0.10.21)
-* Brunch [brunch.io](http://brunch.io) `npm install -g brunch`
+* [Brunch](http://brunch.io) `npm install -g brunch`
+* [Bower](http://bower.io/) `npm install -g bower`
 * Ruby and Sass Gem (for building stylesheets)
 
 To install:
